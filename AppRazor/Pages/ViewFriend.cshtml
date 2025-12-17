@@ -16,8 +16,8 @@
     <div class="container px-4 py-4" id="heading">
         <h2 class="pb-2 border-bottom">
             View details of @Model.Friend.FirstName @Model.Friend.LastName
-            <a href="~/Members/EditGroup?id=@Model.Friend.FriendId">
-                
+            <a href="~/EditFriend?id=@Model.Friend.FriendId">
+                <i class="bi bi-pencil-square" style="color: white;" id="editIcon"></i>
             </a>
         </h2>
         <form class="needs-validation" novalidate>
@@ -48,17 +48,33 @@
 
                         <div class="col-sm-5" id="addressRow">
 
-                            <label for="established" class="form-label">Address</label>
-                            <input type="text" class="form-control" id="address"
-                                value="@Model.Friend.Address.StreetAddress" readonly>
+                            @if (Model.Friend.Address?.AddressId == null)
+                            {
+                                <label for="address" class="form-label">Address</label>
+                                <input type="text" class="form-control" id="address" value="Empty" readonly>
 
-                            <label for="genre" class="form-label">City</label>
-                            <input type="text" class="form-control" id="city" value="@Model.Friend.Address.City"
-                                readonly>
+                                <label for="city" class="form-label">City</label>
+                                <input type="text" class="form-control" id="city" value="Empty" readonly>
 
-                            <label for="genre" class="form-label">Country</label>
-                            <input type="text" class="form-control" id="country" value="@Model.Friend.Address.Country"
-                                readonly>
+                                <label for="country" class="form-label">Country</label>
+                                <input type="text" class="form-control" id="country" value="Empty" readonly>
+                            }
+                            else
+                            {
+                                <label for="address" class="form-label">Address</label>
+                                <input type="text" class="form-control" id="address"
+                                    value="@Model.Friend.Address.StreetAddress" readonly>
+
+                                <label for="city" class="form-label">City</label>
+                                <input type="text" class="form-control" id="city" value="@Model.Friend.Address.City"
+                                    readonly>
+
+                                <label for="country" class="form-label">Country</label>
+                                <input type="text" class="form-control" id="country" value="@Model.Friend.Address.Country"
+                                    readonly>
+
+                            }
+
 
 
                         </div>
@@ -75,8 +91,11 @@
                         </div>
                         @foreach (var item in Model.Friend.Quotes)
                         {
-                            <div class="row mb-2 text-center" id="quotesRow">
-                                <div class="col-md-12 themed-grid-col">@item.QuoteText <br> Author: @item.Author</div>
+                            <div class="row mb-4 text-center" id="quotesRow">
+                                <div class="col-md-12 themed-grid-col">
+                                    <p>"@item.QuoteText"</p>
+                                    - @item.Author <i class="bi bi-chat-quote-fill ms-1"></i>
+                                </div>
                             </div>
                         }
                     </div>
@@ -84,7 +103,7 @@
                     <div class="row g-1">
                         <h3 class="pb-2">Pets</h3>
 
-                        
+
                         @foreach (var item in Model.Friend.Pets)
                         {
                             <div class="row mb-2 text-center">

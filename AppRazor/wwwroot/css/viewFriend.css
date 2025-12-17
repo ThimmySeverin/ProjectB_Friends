@@ -36,6 +36,11 @@
     margin-bottom: 15px;
 }
 
+#editIcon {
+    margin-left: 10px;
+}
+
+
 #quotesRow {
      backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(8px);
