@@ -1,0 +1,65 @@
+.body {
+    background: url(/images/Background_FriendsList.png) no-repeat;
+    background-size: 100%;
+    background-attachment: fixed;
+}
+
+#heading {
+    color: white
+}
+
+#mainBackground {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(8px);
+
+    margin-top: 15px;
+
+    background-color: rgba(70, 67, 67, 0.1);
+
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    border-radius: 10px;
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.5);
+
+    padding: 15px;
+}
+
+#address {
+    margin-bottom: 15px;
+}
+
+#city {
+    margin-bottom: 15px;
+}
+
+#friendName {
+    margin-bottom: 15px;
+}
+
+#quotesRow {
+     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(8px);
+
+    background-color: rgba(70, 67, 67, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.5);
+
+    margin-bottom: 15px;
+    padding: 15px;
+    margin-right: 10px;
+}
+
+#petRow {
+       backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(8px);
+
+    background-color: rgba(70, 67, 67, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.5);
+
+    margin-bottom: 15px;
+    padding: 15px;
+    margin-right: 10px;
+}

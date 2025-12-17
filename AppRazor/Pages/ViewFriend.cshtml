@@ -1,0 +1,102 @@
+@page
+@model AppRazor.Pages.ViewFriendModel
+@{
+    ViewData["Title"] = "View Friend";
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<head>
+    <link rel="stylesheet" href="~/css/viewFriend.css" asp-append-version="true" />
+
+</head>
+
+<body class="body">
+
+
+    <div class="container px-4 py-4" id="heading">
+        <h2 class="pb-2 border-bottom">
+            View details of @Model.Friend.FirstName @Model.Friend.LastName
+            <a href="~/Members/EditGroup?id=@Model.Friend.FriendId">
+                
+            </a>
+        </h2>
+        <form class="needs-validation" novalidate>
+            <div class="row row-cols-1 row-cols-lg-4 align-items-stretch g-3 py-3" id="mainBackground">
+                <div class="col-md-7 col-lg-10">
+
+                    <div class="row g-3">
+                        <div class="col-sm-6">
+                            <label for="groupName" class="form-label">Friend</label>
+                            <input type="text" class="form-control" id="friendName"
+                                value="@Model.Friend.FirstName @Model.Friend.LastName" readonly>
+
+                            <div class="col-sm-6">
+                                <label for="birthday" class="form-label">Birthday</label>
+                                @if (Model.Friend.Birthday == null)
+                                {
+                                    <input type="text" class="form-control" id="birthday" value="No birthday registred"
+                                        readonly>
+                                }
+                                else
+                                {
+                                    <input type="text" class="form-control" id="birthday"
+                                        value="@Model.Friend.Birthday?.ToString("yyyy-MM-dd")" readonly>
+                                }
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-5" id="addressRow">
+
+                            <label for="established" class="form-label">Address</label>
+                            <input type="text" class="form-control" id="address"
+                                value="@Model.Friend.Address.StreetAddress" readonly>
+
+                            <label for="genre" class="form-label">City</label>
+                            <input type="text" class="form-control" id="city" value="@Model.Friend.Address.City"
+                                readonly>
+
+                            <label for="genre" class="form-label">Country</label>
+                            <input type="text" class="form-control" id="country" value="@Model.Friend.Address.Country"
+                                readonly>
+
+
+                        </div>
+
+
+                        <div class="col-sm-6">
+
+                        </div>
+                    </div>
+                    <div class="row g-1">
+                        <h3 class="pb-2">Favorite Quotes</h3>
+
+                        <div class="row mb-2 text-center">
+                        </div>
+                        @foreach (var item in Model.Friend.Quotes)
+                        {
+                            <div class="row mb-2 text-center" id="quotesRow">
+                                <div class="col-md-12 themed-grid-col">@item.QuoteText <br> Author: @item.Author</div>
+                            </div>
+                        }
+                    </div>
+
+                    <div class="row g-1">
+                        <h3 class="pb-2">Pets</h3>
+
+                        
+                        @foreach (var item in Model.Friend.Pets)
+                        {
+                            <div class="row mb-2 text-center">
+                                <div class="col-md-2 themed-grid-col" id="petRow">@item.Name</div>
+                                <div class="col-md-2 themed-grid-col" id="petRow">@item.Kind</div>
+                            </div>
+                        }
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </div>
+
+</body>

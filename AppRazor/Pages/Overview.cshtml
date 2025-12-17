@@ -14,31 +14,74 @@
     <div class="container px-4 py-4" id="list-of-groups">
         <h2 class="pb-2 border-bottom" id="heading">List of all of my friends</h2>
 
-        @*Få in en dropdown med länder här*@
-
-        <div class="d-flex gap-2">
-            <div class="col-md-8 ">
-                <input asp-for="filter" class="form-control" type="search" placeholder="Search" aria-label="Search">
-            </div>
-            <div class="col-md-2 ">
-                <button asp-page-handler="Search" class="btn btn-outline-success" type="submit">Search</button>
-            </div>
-        </div>
-
         <form method="post" class="needs-validation" method="post" novalidate>
-            <div class="row row-cols-1 row-cols-lg-4 align-items-stretch g-4 py-5" id="mainBackground">
 
-                <div class="col-md-10 col-lg-10">
+            <div class="d-flex gap-2">
+                <div class="col-md-8 ">
+                    <input asp-for="filter" class="form-control" type="search" placeholder="Search for Friend, City or Country " aria-label="Search">
+                </div>
+                <div class="col-md-2 ">
+                    <button asp-page-handler="Search" class="btn btn-outline-success" type="submit">Search</button>
+                </div>
+
+
+                @* <label for="countries">Filter by country</label>
+
+                <select name="countries" id="selectedCountry">
+                    @foreach (var country in Model.Countries)
+                    {
+                       <option>@country</option>
+                    }
+                </select> *@
+            </div>
+
+
+
+
+
+            <div class="row row-cols-1 row-cols-lg-4 align-items-stretch g-3 py-3" id="mainBackground">
+
+                <div class="col-md-12 col-lg-12">
+                    <div class="row mb-2 text-center">
+                        <!-- This is where selected item id will be stored -->
+                        <input type="hidden" name="friendId" data-seido-selected-item-id-target />
+
+                        <div class="col-md-4 themed-grid-head-col" id="headerCategory">Friends </div>
+                        <div class="col-md-2 themed-grid-head-col" id="headerCategory">City</div>
+                        <div class="col-md-2 themed-grid-head-col" id="headerCategory">Pets</div>
+                        <div class="col-md-2 themed-grid-head-col" id="addNewButton">
+                            <a href="~/Members/EditGroup" class="btn btn-success btn-sm m-1" type="button">New</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 col-lg-12">
                     <div class="row mb-2 text-center">
 
                         @if (Model.Friends is not null)
                         {
                             @foreach (var item in Model.Friends)
                             {
-                                <div class="col-md-9 themed-grid-col" id="friendsrow">
-                                    <a href="~/ViewGroup?id=@item.FriendId">
+                                <div class="col-md-4 themed-grid-col" id="friendsrow">
+                                    <a href="~/ViewFriend?id=@item.FriendId">
                                         @item.FirstName @item.LastName
                                     </a>
+                                </div>
+
+                                <div class="col-md-2 themed-grid-col" id="friendsrow">
+                                    @if (item.Address?.City != null)
+                                    {
+                                        <p>@item.Address?.City</p>
+                                    }
+                                    else
+                                    {
+                                        <p>No address found</p>
+                                    }
+
+                                </div>
+
+                                <div class="col-md-2 themed-grid-col" id="friendsrow">
+                                    <p>@item.Pets.Count()</p>
                                 </div>
                                 <div class="col-md-2 themed-grid-col" id="buttonDiv">
                                     <a href="~/Members/EditGroup?id=@item.FriendId" class="btn btn-secondary btn-sm m-1"
@@ -54,32 +97,29 @@
                                 </div>
                             }
                             <nav aria-label="Standard pagination example">
-                                <ul class="pagination">
+                                <ul class="pagination" id="page-buttons">
                                     <li class="page-item">
-                                        <a class="page-link"
-                                            href="~/ListOfGroups?pagenr=@Model.PrevPageNr&search=@Model.filter"
+                                        <a class="page-link" href="~/Overview?pagenr=@Model.PrevPageNr&search=@Model.filter"
                                             aria-label="Previous">
-                                            <span aria-hidden="true">&laquo;</span>
+                                            <span aria-hidden="true">Previous</span>
                                         </a>
                                     </li>
                                     @for (int i = 0; i < Model.NrVisiblePages; i++)
                                     {
                                         <li class="page-item">
-                                            <a class="page-link" href="~/ListOfGroups?pagenr=@i&search=@Model.filter">@(i +
-                                                                                        1)</a>
-                                    </li>
+                                            <a class="page-link" href="~/Overview?pagenr=@i&search=@Model.filter">@(i + 1)</a>
+                                        </li>
 
-                                }
-                                <li class="page-item">
-                                    <a class="page-link"
-                                        href="~/ListOfGroups?pagenr=@Model.NextPageNr&search=@Model.filter"
-                                        aria-label="Next">
-                                        <span aria-hidden="true">&raquo;</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-                                                }
+                                    }
+                                    <li class="page-item">
+                                        <a class="page-link" href="~/Overview?pagenr=@Model.NextPageNr&search=@Model.filter"
+                                            aria-label="Next">
+                                            <span aria-hidden="true">Next</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        }
                     </div>
                 </div>
             </div>
