@@ -48,7 +48,7 @@ public class OverviewModel : PageModel
         // NumberOfFriends = data.DbItemsCount;
         // Countries = Friends.Where(f => f.Address != null && f.Address.Country != null).Select(c => c.Address.Country).Distinct().ToList();
 
-     
+
 
 
         UpdatePagination(data.DbItemsCount);
@@ -79,6 +79,25 @@ public class OverviewModel : PageModel
         PrevPageNr = Math.Max(0, ThisPageNr - 1);
         NextPageNr = Math.Min(NrOfPages - 1, ThisPageNr + 1);
         NrVisiblePages = Math.Min(10, NrOfPages);
+    }
+
+    public async Task<IActionResult> OnPostDeleteFriend(Guid friendId)
+    {
+
+        if (friendId != Guid.Empty)
+        {
+            await _service.DeleteFriendAsync(friendId);
+
+            var data = await _service.ReadFriendsAsync(UseSeed, false, filter, ThisPageNr, PageSize);
+            Friends = data.PageItems;
+            NumberOfFriends = data.DbItemsCount;
+
+            UpdatePagination(data.DbItemsCount);
+        }
+
+
+        return Page();
+
     }
 
 

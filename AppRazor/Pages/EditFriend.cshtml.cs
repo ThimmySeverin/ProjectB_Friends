@@ -111,9 +111,9 @@ public class EditFriendModel : PageModel
         return Page();
     }
 
-    public IActionResult OnPostDeleteQuote(Guid quoteId)
+    public IActionResult OnPostDeleteQuote(Guid id)
     {
-        FriendInput.Quotes.First(q => q.QuoteId == quoteId).StatusIM = StatusIM.Deleted;
+        FriendInput.Quotes.First(q => q.QuoteId == id).StatusIM = StatusIM.Deleted;
         return Page();
     }
 
@@ -163,9 +163,9 @@ public class EditFriendModel : PageModel
         return Page();
     }
 
-    public IActionResult OnPostDeletePet([FromQuery] Guid petId)
+    public IActionResult OnPostDeletePet(Guid id)
     {
-        FriendInput.Pets.First(p => p.PetId == petId).StatusIM = StatusIM.Deleted;
+        FriendInput.Pets.First(p => p.PetId == id).StatusIM = StatusIM.Deleted;
 
         return Page();
     }
