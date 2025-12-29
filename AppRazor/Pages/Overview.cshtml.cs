@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Services.Interfaces;
 using Services;
 using Models.Interfaces;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace AppRazor.Pages;
 
@@ -11,6 +12,11 @@ public class OverviewModel : PageModel
 
     readonly IFriendsService _service;
     public List<IFriend>? Friends { get; set; }
+    public List<IFriend>? NewFriends { get; set; }
+
+    public List<IFriend>? AllFriends { get; set; }
+
+
 
     public List<string>? Countries { get; set; }
 
@@ -44,12 +50,15 @@ public class OverviewModel : PageModel
         }
 
         var data = await _service.ReadFriendsAsync(UseSeed, false, filter, ThisPageNr, PageSize);
+        var createdData = await _service.ReadFriendsAsync(false, false, filter, ThisPageNr, PageSize);
+        NewFriends = createdData.PageItems;
         Friends = data.PageItems;
+
+        Friends.AddRange(NewFriends);
+
+
         // NumberOfFriends = data.DbItemsCount;
         // Countries = Friends.Where(f => f.Address != null && f.Address.Country != null).Select(c => c.Address.Country).Distinct().ToList();
-
-
-
 
         UpdatePagination(data.DbItemsCount);
 
@@ -62,8 +71,12 @@ public class OverviewModel : PageModel
     {
 
         var data = await _service.ReadFriendsAsync(UseSeed, false, filter, ThisPageNr, PageSize);
+        var createdData = await _service.ReadFriendsAsync(false, false, filter, ThisPageNr, PageSize);
+
         Friends = data.PageItems;
-        NumberOfFriends = data.DbItemsCount;
+        NewFriends = createdData.PageItems;
+
+        Friends.AddRange(NewFriends);
 
 
         UpdatePagination(data.DbItemsCount);
@@ -96,7 +109,7 @@ public class OverviewModel : PageModel
         }
 
 
-        return Page();
+        return RedirectToPage("Overview");
 
     }
 

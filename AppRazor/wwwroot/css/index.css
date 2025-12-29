@@ -1,5 +1,28 @@
 body {
-background: url(/images/Startpage_Background.png) center;
+   background: url(/images/Startpage_Background.png) center;
 
    background-attachment: fixed;
+}
+
+
+#btnFrontpage {
+
+   background: linear-gradient(45deg, #00dadec5, #fc00ff);
+   border: none;
+}
+
+#btnFrontpage:hover {
+   box-shadow: 0 6px 25px rgba(58, 131, 107, 0.6);
+
+}
+
+#middleDiv {
+   background-color: rgba(0, 0, 0, 0.363);
+   backdrop-filter: blur(15px);
+   border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+h1,
+p {
+   color: #FAFAFA;
 }

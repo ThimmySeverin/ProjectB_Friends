@@ -111,9 +111,9 @@ public class EditFriendModel : PageModel
         return Page();
     }
 
-    public IActionResult OnPostDeleteQuote(Guid id)
+    public IActionResult OnPostDeleteQuote(Guid QuoteId)
     {
-        FriendInput.Quotes.First(q => q.QuoteId == id).StatusIM = StatusIM.Deleted;
+        FriendInput.Quotes.First(q => q.QuoteId == QuoteId).StatusIM = StatusIM.Deleted;
         return Page();
     }
 
@@ -163,9 +163,9 @@ public class EditFriendModel : PageModel
         return Page();
     }
 
-    public IActionResult OnPostDeletePet(Guid id)
+    public IActionResult OnPostDeletePet(Guid PetId)
     {
-        FriendInput.Pets.First(p => p.PetId == id).StatusIM = StatusIM.Deleted;
+        FriendInput.Pets.First(p => p.PetId == PetId).StatusIM = StatusIM.Deleted;
 
         return Page();
     }
@@ -206,6 +206,14 @@ public class EditFriendModel : PageModel
             FriendInput.Address.StatusIM = StatusIM.Modified;
         }
 
+        return Page();
+    }
+
+    public async Task<IActionResult> OnPostUndo()
+    {
+        var friend = await _friendService.ReadFriendAsync(FriendInput.FriendId, false);
+
+        FriendInput = new FriendIM(friend.Item);
         return Page();
     }
 

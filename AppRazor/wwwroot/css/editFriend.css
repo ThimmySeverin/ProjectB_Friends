@@ -25,34 +25,6 @@
     padding: 15px;
 }
 
-/* #addressRow {
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(8px);
-
-    background-color: rgba(70, 67, 67, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
-    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.5);
-
-    margin-bottom: 15px;
-    padding: 15px;
-} */
-
-
-/* .petRow {
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(8px);
-
-    background-color: rgba(70, 67, 67, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
-    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.5);
-
-    margin-bottom: 15px;
-    padding: 15px;
-    margin-right: 10px;
-} */
-
 
 
 #quotesRow {
@@ -95,6 +67,11 @@
 
 .test {
     margin-right: 10px;
+}
+
+i {
+    color: white;
+    font-size: 20px;
 }
 
 

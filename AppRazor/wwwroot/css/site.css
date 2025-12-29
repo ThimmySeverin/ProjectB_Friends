@@ -8,12 +8,39 @@ html {
   }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
-#navCon {
+.custom-nav {
+  /* Glaseffekt */
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  /* Väldigt transparent */
+  backdrop-filter: blur(10px);
+  /* Suddar ut bakgrundsbilden bakom navbaren */
+  -webkit-backdrop-filter: blur(10px);
 
+  /* En subtil kant nertill istället för den skarpa vita */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+
+  /* Skugga för djup */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+.custom-nav .nav-link {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.custom-nav .nav-link:hover {
+  color: #00dbde !important;
+}
+
+.custom-nav .navbar-brand {
+  color: #FAFAFA !important;
 }
 
 html {
@@ -25,11 +52,27 @@ body {
   margin-bottom: 60px;
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+
+
+.form-floating>.form-control-plaintext::placeholder,
+.form-floating>.form-control::placeholder {
   color: var(--bs-secondary-color);
   text-align: end;
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+.form-floating>.form-control-plaintext:focus::placeholder,
+.form-floating>.form-control:focus::placeholder {
   text-align: start;
+}
+
+footer {
+  position:absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 10px 0;
+
+}
+
+#footerContainer {
+  color: #FAFAFA !important;
 }

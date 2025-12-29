@@ -1,0 +1,24 @@
+.body {
+    background: url(/images/Background_FriendsList.png) no-repeat;
+    background-size: 100%;
+    background-attachment: fixed;
+}
+
+h3 {
+    color: white;
+}
+
+#seededInfo {
+    color: white;
+}
+
+button {
+
+    background: linear-gradient(45deg, #00dbde, #fc00ff);
+}
+
+button:hover {
+    box-shadow: 0 6px 25px rgba(58, 131, 107, 0.6);
+
+}
+
