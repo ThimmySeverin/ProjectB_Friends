@@ -265,7 +265,7 @@ public class EditFriendModel : PageModel
         }
         else
         {
-            
+
             var currentAddress = updatedFriend.Item.Address;
             if (currentAddress != null)
             {
@@ -434,14 +434,26 @@ public class EditFriendModel : PageModel
         public StatusIM StatusIM { get; set; }
         public Guid AddressId { get; set; }
 
+        [Required(ErrorMessage = "You must enter a street address")]
         public string? StreetAddress { get; set; } = string.Empty;
         public int? ZipCode { get; set; }
+
+        [Required(ErrorMessage = "You must enter a city")]
         public string? City { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "You must enter a country")]
         public string? Country { get; set; } = string.Empty;
 
+
+        [Required(ErrorMessage = "You must enter a street address")]
         public string? editStreetAddress { get; set; }
         public int? editZipCode { get; set; }
+
+
+        [Required(ErrorMessage = "You must enter a city")]
         public string? editCity { get; set; }
+
+        [Required(ErrorMessage = "You must enter a country")]
         public string? editCountry { get; set; }
 
         public AddressIM() { }

@@ -132,7 +132,9 @@
                                             <input asp-for="FriendInput.Address.editStreetAddress"
                                                 class="form-control" />
                                             <label>Street Address</label>
+                                             <span asp-validation-for="FriendInput.Address.editStreetAddress" class="invalid-feedback"></span>
                                         </div>
+                                        
                                         <div class="form-floating col-md-2 themed-grid-col">
                                             <input asp-for="FriendInput.Address.editZipCode" class="form-control" />
                                             <label>Zipcode</label>
@@ -140,10 +142,12 @@
                                         <div class="form-floating col-md-3 themed-grid-col">
                                             <input asp-for="FriendInput.Address.editCity" class="form-control" />
                                             <label>City</label>
+                                             <span asp-validation-for="FriendInput.Address.editCity" class="invalid-feedback"></span>
                                         </div>
                                         <div class="form-floating col-md-2 themed-grid-col">
                                             <input asp-for="FriendInput.Address.editCountry" class="form-control" />
                                             <label>Country</label>
+                                             <span asp-validation-for="FriendInput.Address.editCountry" class="invalid-feedback"></span>
                                         </div>
                                     </div>
                                 </div>
@@ -251,11 +255,6 @@
                                             data-seido-selected-item-id="@Model.FriendInput.Pets[k].PetId">
                                             Edit
                                         </button>
-
-                                        @* <button type="submit" asp-page-handler="DeletePet" class="btn btn-danger btn-sm m-1"
-                                            asp-route-id="@Model.FriendInput.Pets[k].PetId">
-                                            Del
-                                        </button> *@
 
                                         <button type="button" class="btn btn-danger btn-sm m-1" data-bs-toggle="modal"
                                             data-bs-target="#delPet"
@@ -387,12 +386,6 @@
                                             data-seido-selected-item-id="@Model.FriendInput.Quotes[k].QuoteId">
                                             Edit
                                         </button>
-
-                                        @* <button type="submit" asp-page-handler="DeleteQuote"
-                                            class="btn btn-danger btn-sm m-1"
-                                            asp-route-id="@Model.FriendInput.Quotes[k].QuoteId">
-                                            Del
-                                        </button> *@
 
 
                                         <button type="button" class="btn btn-danger btn-sm m-1" data-bs-toggle="modal"
