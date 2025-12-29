@@ -54,6 +54,7 @@ public class AdminDbRepos
     {
         //First of all make sure the database is cleared from all seeded data
         await RemoveSeedAsync(true);
+        await RemoveSeedAsync(false); // Deletes manually created friends
 
         //Create a seeder
         var fn = Path.GetFullPath(_seedSource);
