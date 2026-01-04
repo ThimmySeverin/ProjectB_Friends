@@ -56,10 +56,6 @@ public class OverviewModel : PageModel
 
         Friends.AddRange(NewFriends);
 
-
-        // NumberOfFriends = data.DbItemsCount;
-        // Countries = Friends.Where(f => f.Address != null && f.Address.Country != null).Select(c => c.Address.Country).Distinct().ToList();
-
         UpdatePagination(data.DbItemsCount);
 
 

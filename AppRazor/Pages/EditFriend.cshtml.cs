@@ -127,12 +127,12 @@ public class EditFriendModel : PageModel
             return Page();
         }
 
-        FriendInput.NewPet.StatusIM = StatusIM.Inserted; // Status inserted, läggs senare till i databas
-        FriendInput.NewPet.PetId = Guid.NewGuid(); // Tillfälligt guid, för ex. radera innan man hunnit spara
+        FriendInput.NewPet.StatusIM = StatusIM.Inserted; 
+        FriendInput.NewPet.PetId = Guid.NewGuid();
 
-        FriendInput.Pets.Add(new PetIM(FriendInput.NewPet)); // Tar inlagd quote, lägger i copy konstruktor, sedan i listan som tillhör vännen. 
+        FriendInput.Pets.Add(new PetIM(FriendInput.NewPet)); 
 
-        FriendInput.NewPet = new PetIM(); // tömmer input fält, gör att man kan lägga till fler quotes när den tidigare väl är lagd i listan ovan. 
+        FriendInput.NewPet = new PetIM();
 
         return Page();
     }
@@ -170,7 +170,7 @@ public class EditFriendModel : PageModel
         return Page();
     }
 
-    public IActionResult OnPostEditAddress([FromQuery] Guid AddressId) // Kolla hur denna körs, och se så du fattar OnSaveAddress
+    public IActionResult OnPostEditAddress([FromQuery] Guid AddressId) 
     {
         string[] keys = { "FriendInput.Address.editStreetAddress",
                             "FriendInput.Address.editZipCode",
